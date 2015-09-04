@@ -3,17 +3,32 @@ var fs = require('fs');
 
 http.createServer(function(req, res){
     var url = req.url;
-    if(url == '/'){
+    var urls = url.split('?')
+    var pathname = urls[0];
+    var queryObj = {};
+    var query = urls[1];
+    if(query){
+        var fields = query.split('&');
+        fields.forEach(function(field){
+            var vals = field.split('=');
+            queryObj[vals[0]] = vals[1];
+        })
+    }
+
+
+    if(pathname == '/'){
         fs.readFile('./hello.html',function(err, data){
             res.write(data);
             //console.log(data.toString());
             res.end();
         })
-    }else if(url == '/style.css'){
+    }else if(pathname == '/style.css'){
         fs.readFile('./style.css', function(err, data){
             res.write(data);
             res.end();
         })
+    }else if(pathname == '/params'){
+        res.end(JSON.stringify(queryObj));
     }
 }).listen(8080);
 
