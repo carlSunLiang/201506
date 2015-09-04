@@ -1,6 +1,7 @@
 var http = require('http');
 var fs = require('fs');
-
+var mime = require('mime');
+var path = require('path');
 http.createServer(function(req, res){
     var url = req.url;
     var urls = url.split('?')
@@ -17,18 +18,35 @@ http.createServer(function(req, res){
 
 
     if(pathname == '/'){
+        res.setHeader('Content-type', 'text/html');
         fs.readFile('./hello.html',function(err, data){
             res.write(data);
             //console.log(data.toString());
             res.end();
         })
-    }else if(pathname == '/style.css'){
-        fs.readFile('./style.css', function(err, data){
-            res.write(data);
-            res.end();
-        })
+    }else if(pathname == 'favicon.ico'){
+        res.end('404');
+
+    }else if(pathname == '/ajax'){
+        res.end('hehe');
     }else if(pathname == '/params'){
         res.end(JSON.stringify(queryObj));
+    }else{
+        var filename = '.'+pathname;
+        //if(path.extname == '.mp3'){
+        //
+        //}else{
+        //
+        //}
+        res.setHeader('Content-type', mime.lookup(pathname));
+        fs.readFile(filename, function(err, data){
+           
+                console.log('data',data);
+                res.write(data);
+                res.end();
+
+
+        })
     }
 }).listen(8080);
 
