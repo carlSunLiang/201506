@@ -8,7 +8,7 @@
 //闭bao： 函数运行时产生的私有上下文
 
 
- var i =9;
+var i =9;
 function foo(){
     i = 0;
     return function(){
