@@ -1,0 +1,26 @@
+{
+  "name": "liuruoying",
+  "version": "0.0.1",
+  "description": "'this is my demo'",
+  "main": "main.js",
+  "dependencies": {
+    "mime": "^1.3.4"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "node main.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/carlSunLiang/201506.git"
+  },
+  "keywords": [
+    "demo"
+  ],
+  "author": "liuruoying",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/carlSunLiang/201506/issues"
+  },
+  "homepage": "https://github.com/carlSunLiang/201506"
+}
