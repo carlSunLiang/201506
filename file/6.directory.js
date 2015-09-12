@@ -69,3 +69,12 @@ function exec(current, previous){
 fs.watchFile('2.txt',{interval: 0}, function () {
 
 })
+
+
+/*
+* 写一个文件服务器
+* */
+
+/*
+* https://github.com/shenyulin/fileManager  参考作业
+* */
